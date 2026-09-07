@@ -1,113 +1,94 @@
-# Social Creator Workflow (自媒体全流程智能创作操作系统)
+<p align="center">
+  <img src="assets/readme/hero.svg" alt="Social Creator Workflow Banner" width="100%">
+</p>
 
-面向中文全域自媒体（微信公众号、小红书、B站、短视频）的工业级、闭环创作流水线。
-
-彻底摒弃传统 AI 凭空捏造选题的悬浮模式，严格贯彻**「情报先行 ➔ 商业对标 ➔ 深度写作 ➔ 架构级洗稿去AI味 ➔ 工业级物料装配 ➔ 资产复利」**的五阶执行链路。
-
----
-
-## 核心架构与行驶路径
-
-```
-[阶段 1: 全域情报雷达]
-  调用 cn-scraper MCP (小红书 / B站 / 抖音 / 知乎 / 微博)
-  ➔ 抓取真实爆款、高频热评、痛点语境与受众吐槽，产出《真实情报洞察报告》
-       │
-[阶段 2: 商业定位与对标过滤]
-  调用 dbskill 核心矩阵 (/dbs-benchmark, /dbs-diagnosis, /dbs-deconstruct)
-  ➔ 五重对标过滤、消解伪需求、确立受众画像与单篇商业目标
-       │
-[阶段 3: 深度内容生产与架构级洗 AI 味]
-  ├─ 1. 骨架起草:
-  │    ├─ 公众号长文 ──> khazix-writer (HKR人味质检 / 五大叙事原型)
-  │    └─ 短视频/图文 ─> dbs-hook (前20s留存) + dbs-xhs-title (75个爆款公式)
-  ├─ 2. 架构级洗稿去 AI 味 (Sepia Core):
-  │    ├─ 诊断扫描: sepia-review (定位对称句、因果过密、虚浮拔高指纹)
-  │    └─ 三层洗稿重构: sepia-refactor / sepia-recreate
-  │         * Pass 1 架构层: 松开机械因果链，剔除鸡汤式大团圆结语，强制注入真实试错经历
-  │         * Pass 2 推进层: 打碎一段问一段答死板模板，重构叙事呼吸
-  │         * Pass 3 句法层: 基于中文 HC3 标准，打破节拍器对称，拉大长短句落差
-  └─ 3. 事实边界终审:
-       └─ oil-tone: 运行 tone_lint.py，剔除公文包黑话与无事实依据的夸张修饰
-       │
-[阶段 4: 工业级物料装配与交付]
-  ├─ 公众号排版 ──> gzh-design (摸鱼绿/石墨风，自动合规校验，一键复制独立 HTML)
-  ├─ 社交封面 ────> oil-cover (1fps智能抽帧 + 官方Logo注入) / gc-minimal-zine / heytea-style
-  ├─ 视频动效 ────> video-generation-workflow (分镜表) + video-shotcraft (2.5D Remotion 电影级运镜)
-  └─ 视频字幕 ────> oil-subtitle (百炼 FunAudio ASR + Qwen 3.7 视觉抽帧核对 + 错题本自学习)
-       │
-[阶段 5: 认知归档与资产复利]
-  调用 dbs-save / dbs-decision
-  ➔ 沉淀本次选题决策与方法论，自动更新专属术语错题本，形成个人知识资产
-```
+<p align="center">
+  <a href="https://github.com/Tyleraltight/social-creator-workflow/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-06b6d4?style=flat-square" alt="License MIT"></a>
+  <a href="https://agentskills.io"><img src="https://img.shields.io/badge/Agent%20Skills-Standard-10b981?style=flat-square" alt="Agent Skills Standard"></a>
+  <a href="https://github.com/Tyleraltight/social-creator-workflow"><img src="https://img.shields.io/badge/Runtime-Universal%20Agent-3b82f6?style=flat-square" alt="Universal Agent"></a>
+  <a href="https://github.com/Tyleraltight/social-creator-workflow"><img src="https://img.shields.io/badge/De--AI%20Engine-Sepia%20Core-8b5cf6?style=flat-square" alt="Sepia Core"></a>
+</p>
 
 ---
 
-## 阶段执行 SOP 详解
+## 价值主张
 
-### 阶段 1：全域情报雷达 (Intelligence Radar)
-拒绝拍脑袋，只基于平台真实发生的数据做决策。
-- **调用工具**：原生内置 `cn-scraper` MCP。
-- **执行动作**：
-  1. 小红书：搜索近 7 天互动前 10 笔记，抓取前 50 条热评，提取受众困惑。
-  2. B站/抖音：抓取相关关键词热门播放、弹幕与争议焦点。
-  3. 知乎/微博：检索高赞长回答，提取论据与行业痛点。
-- **输出物**：《受众痛点与争议事实清单》。
+面向微信公众号、小红书、B站、短视频等全域自媒体的**工业级闭环智能创作操作系统**。
 
-### 阶段 2：商业定位与对标过滤 (Benchmarking & Strategy)
-对抓取回来的海量信息做商业化过滤，防止被低质流量带偏。
-- **调用工具**：`dbskill` 系列。
-- **核心标准**：
-  - `/dbs-benchmark`：满足“客群对齐、体量可复制、商业模式清晰”三项硬指标。
-  - `/dbs-diagnosis`：明确本文交付物是一次性认知震撼、实操避坑、还是产品心智占领。
-- **输出物**：《单篇内容核心主线与受众价值主张》。
+传统 AI 创作的最大痛点在于“凭空编造虚假痛点”与“浓烈且工整的 AI 机器味”。本项目严格贯彻 **「真实情报先行 ➔ 商业对标过滤 ➔ 深度起草 ➔ 架构级洗 AI 味 ➔ 工业级物料装配 ➔ 资产复利」** 的五阶全闭环标准，交付即是可发布的成品。
 
-### 阶段 3：深度内容生产与架构级去 AI 味 (Drafting & De-AI-fying)
-三步递进，彻底消除 AI 生成文本的虚浮与机械感。
-- **3.1 初始起草**：
-  - 公众号长文：使用 `khazix-writer`，采用“调查实验型”或“现象剖析型”叙事，确保阅读心流。
-  - 短视频口播/图文：使用 `dbs-hook` 雕琢前 20 秒开口，使用 `dbs-xhs-title` 给出 5 个命中率最高的标题选项。
-- **3.2 架构级洗稿 (Sepia Core)**：
-  - 运行 `sepia-review` 获取文本 AI 指纹体检表。
-  - 运行 `sepia-refactor` 或 `sepia-recreate`：
-    1. 强制砍掉末尾“总而言之/这带给我们的启示是……”式的陈腐大团圆。
-    2. 强制加入至少 1 处“真实试错、走过的弯路或翻车细节”。
-    3. 制造中文句式落差，短句如刀，长句说理，打破节拍器平衡。
-- **3.3 事实与文风终审**：
-  - 运行 `oil-tone` 检查事实边界，平铺直叙，杜绝公文包黑话。
+---
 
-### 阶段 4：工业级多模态装配 (Multimodal Production)
-交付即成品，无需人工二次调整格式。
-- **公众号成品**：由 `gzh-design` 生成标准 HTML，执行 `validate_gzh_html.py` 确保 100% 格式不跑偏，提供一键复制。
-- **封面交付**：
-  - 教程类：`oil-cover` 抽帧并合成官方 Logo；
-  - 杂志风：`gc-minimal-zine-poster`；
-  - 治愈插画：`heytea-style`。
-- **视频成片**：`video-shotcraft` 负责 2.5D Remotion 渲染；`oil-subtitle` 负责 Qwen 3.7 抽帧视觉核对无错别字字幕。
+## 核心五阶执行架构
 
-### 阶段 5：资产复利 (Asset Compounding)
-- 运行 `/dbs-save` 将本轮沉淀的有效论点归档至本地知识库。
-- `oil-subtitle` 自动写入新识别的技术词汇与专业缩写至专属字典。
+| 阶段 | 核心任务 | 底层驱动工具 | 关键交付物 |
+| :--- | :--- | :--- | :--- |
+| **01. 全域情报雷达** | 抓取平台实时爆款、高频热评与争议焦点，拒绝凭空臆想 | 本地原生 `cn-scraper` MCP (小红书 / B站 / 抖音 / 知乎 / 微博) | 《受众痛点与争议事实清单》 |
+| **02. 商业对标过滤** | 5 重商业化对标过滤，消解伪需求，明确转化路径 | `dbskill` 核心矩阵 (`dbs-benchmark`, `dbs-diagnosis`, `dbs-deconstruct`) | 《单篇定位承诺与受众画像》 |
+| **03. 深度起草与洗稿** | 人味叙事起草 + 三层架构级洗 AI 味 + 事实边界审查 | `khazix-writer` + `sepia` (三层洗稿重构) + `oil-tone` (`tone_lint.py`) | 零机器味、零鸡汤升华的终审文稿 |
+| **04. 工业级物料装配** | 格式自校验图文排版、实操抽帧封面、2.5D 代码运镜与视听校对字幕 | `gzh-design` + `oil-cover` + `video-shotcraft` + `oil-subtitle` | 带一键复制的 HTML / 4:3 封面 / 电影级压制视频 |
+| **05. 资产复利沉淀** | 方法论与决策归档，术语自学习错题本沉淀 | `dbs-save` + `dbs-decision` + 本地词库引擎 | 个人专属创作经验库与专业词典 |
+
+---
+
+## 阶段 3 核心亮点：Sepia 架构级洗 AI 味引擎
+
+市面上浅层的 Humanizer 工具仅停留在词汇替换层面，而前沿学术实测表明 **AI 检测器仅凭“叙事架构特征”就能以 93.2% 的准确率识破机器文本**。
+
+本工作流将 `sepia` 深度嵌入内容生产流水线，实施**三层穿透式重构**：
+
+```text
+[初始起草] ──> [sepia-review 诊断扫描] ──> [sepia-refactor / recreate 三层重构] ──> [oil-tone 事实硬查杀]
+```
+
+1. **Pass 1 叙事架构层**：
+   - 彻底砍掉末尾“总的来说 / 这带给我们的启示……”等抽象鸡汤与自我和解式总结。
+   - 强制植入至少 1 处真实发生过的“翻车试验、踩坑经过或无效路径”。
+   - 松开机械单线的因果推导，延迟结论释放。
+2. **Pass 2 篇章推进层**：
+   - 打碎“一段提问接一段解答”的工整结构，重构自然对话与故事叙述的呼吸节奏。
+3. **Pass 3 句法语调层**：
+   - 针对中文语料（基于 HC3 规范校准）打破节拍器式的句子对称，同一段落内有意识拉大短句与长句的长度落差。
 
 ---
 
 ## 快速调用指南
 
-在对话环境中，通过自然语言即可直接触发本工作流：
+本工作流已封装为标准 Agent Skill。在已支持 Agent Skills 的运行时环境中，输入自然语言即可一键调度：
 
-### 1. 全流程执行
-> 跑自媒体全流程：我想做 [具体选题/关键词]，先搜小红书和B站近期的真实数据，再帮我定策略并出稿。
+### 1. 全流程端到端执行
+```text
+运行 social-creator-flow：我想做 [具体选题/关键词]，先搜小红书和B站近期的真实数据，再帮我定策略并出稿。
+```
 
-### 2. 深度洗稿与去 AI 味
-> 用 sepia-recreate 帮我洗一下这段 AI 生成的文案，打破它的因果套路和拔高结尾，重写成有活人感的稿子，最后用 oil-tone 校验事实边界。
+### 2. 专项深度去 AI 味洗稿
+```text
+用 sepia-recreate 帮我洗一下这段文案，打破因果套路和拔高结尾，重写成有活人感的稿子，最后用 oil-tone 校验事实边界。
+```
 
-### 3. 公众号长文全套
-> 针对 [行业痛点]，用卡兹克风格写一篇深度长文，经 sepia 架构级洗稿后，用 gzh-design 摸鱼绿主题排版输出带一键复制的 HTML。
+### 3. 公众号长文全套闭环
+```text
+针对 [行业痛点]，用卡兹克风格写一篇深度长文，经 sepia 架构级洗稿后，直接用 gzh-design 摸鱼绿主题排版输出带一键复制的 HTML。
+```
 
-### 4. 视频后期与字幕流水线
-> 给 [视频路径] 走本地字幕流水线：用 oil-subtitle 进行视觉抽帧核对与烧录，并用 oil-cover 输出 3:4 封面。
+### 4. 视频字幕与封面流水线
+```text
+给 [视频路径] 走本地字幕流水线：用 oil-subtitle 进行视觉抽帧核对与烧录，并用 oil-cover 输出 3:4 封面。
+```
+
+---
+
+## 本地安装
+
+```bash
+# 克隆本仓库到工作区
+git clone https://github.com/Tyleraltight/social-creator-workflow.git
+
+# 或者通过 skills CLI 添加
+npx skills add Tyleraltight/social-creator-workflow
+```
 
 ---
 
 ## 许可证
-MIT License
+MIT License © 2026 Tyler / T
